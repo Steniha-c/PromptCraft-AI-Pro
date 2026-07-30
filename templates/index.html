@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptCraft AI</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🚀 PromptCraft AI</h1>
+    <p>Learn Prompt Engineering by Building Great Prompts</p>
+
+    <div class="card">
+
+        <label>Role</label>
+        <input
+            type="text"
+            id="role"
+            placeholder="Example: You are a Python Mentor">
+
+        <label>Task</label>
+        <textarea
+            id="task"
+            rows="4"
+            placeholder="Explain Recursion"></textarea>
+
+        <label>Output Format</label>
+
+        <select id="format">
+
+            <option value="Paragraph">Paragraph</option>
+
+            <option value="Bullet Points">
+                Bullet Points
+            </option>
+
+            <option value="Table">
+                Table
+            </option>
+
+            <option value="Step by Step">
+                Step by Step
+            </option>
+
+        </select>
+
+        <label>Few-shot Examples</label>
+
+        <textarea
+            id="examples"
+            rows="5"
+            placeholder="Example 1...
+Example 2..."></textarea>
+
+        <div class="checkbox">
+
+            <input
+                type="checkbox"
+                id="cot">
+
+            <label for="cot">
+                Enable Chain of Thought
+            </label>
+
+        </div>
+
+        <button onclick="generatePrompt()">
+            Generate Prompt
+        </button>
+
+    </div>
+
+    <div class="result">
+
+        <h2>Generated Prompt</h2>
+
+        <pre id="promptResult"></pre>
+
+    </div>
+
+    <div class="score">
+
+        <h2>Prompt Score</h2>
+
+        <h3 id="score"></h3>
+
+        <pre id="checklist"></pre>
+
+    </div>
+
+    <div class="suggestions">
+
+        <h2>Suggestions</h2>
+
+        <ul id="suggestions"></ul>
+
+    </div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
