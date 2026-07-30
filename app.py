@@ -1,11 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 from prompt_engine import PromptEngine
+from database import PromptDatabase
 from utils import evaluate_prompt
 
 app = Flask(__name__)
 
 # Create PromptEngine object
 engine = PromptEngine()
+db = PromptDatabase()
 
 
 @app.route("/")
@@ -42,12 +44,50 @@ def generate():
         cot
     )
 
+    print("=== /generate called ===")
+    print("Role:", role)
+    print("Task:", task)
+
+    # Save Prompt
+    db.save_prompt(
+        role=role,
+        task=task,
+        output_format=output_format,
+        examples=examples,
+        prompt=prompt,
+        score=score
+    )
+
+    print("Prompt saved successfully!")
+
     return jsonify({
         "prompt": prompt,
         "score": score,
         "checklist": checklist,
         "suggestions": suggestions
     })
+
+@app.route("/history", methods=["GET"])
+def history():
+
+    prompts = db.get_all_prompts()
+
+    history = []
+
+    for row in prompts:
+
+        history.append({
+
+            "id": row[0],
+            "role": row[1],
+            "task": row[2],
+            "format": row[3],
+            "score": row[4],
+            "created_at": row[5]
+
+        })
+
+    return jsonify(history)
 
 
 @app.route("/fewshot", methods=["POST"])
