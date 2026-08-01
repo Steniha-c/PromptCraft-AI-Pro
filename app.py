@@ -2,12 +2,14 @@ from flask import Flask, render_template, request, jsonify
 from prompt_engine import PromptEngine
 from database import PromptDatabase
 from utils import evaluate_prompt
+from gemini_service import GeminiService
 
 app = Flask(__name__)
 
 # Create PromptEngine object
 engine = PromptEngine()
 db = PromptDatabase()
+gemini = GeminiService()
 
 
 @app.route("/")
@@ -59,13 +61,15 @@ def generate():
     )
 
     print("Prompt saved successfully!")
+    ai_response = gemini.generate_response(prompt)
 
     return jsonify({
-        "prompt": prompt,
-        "score": score,
-        "checklist": checklist,
-        "suggestions": suggestions
-    })
+    "prompt": prompt,
+    "score": score,
+    "checklist": checklist,
+    "suggestions": suggestions,
+    "ai_response": ai_response
+})
 
 @app.route("/history", methods=["GET"])
 def history():

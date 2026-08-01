@@ -6,13 +6,31 @@
     <title>PromptCraft AI</title>
 
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
 
-    <h1>🚀 PromptCraft AI</h1>
-    <p>Learn Prompt Engineering by Building Great Prompts</p>
+    <div class="hero">
+
+    <h1>🚀 PromptCraft AI Pro</h1>
+
+    <p>
+        Craft Better Prompts.
+        Get Smarter AI Responses.
+    </p>
+
+    <div class="badge">
+
+        ✨ Powered by Gemini AI
+
+    </div>
+
+</div>
 
     <div class="card">
 
@@ -72,15 +90,28 @@ Example 2..."></textarea>
             Generate Prompt
         </button>
 
+        <div id="loading" class="loading">
+
+            🤖 Gemini is thinking...
+
+        </div>
+
+
     </div>
 
     <div class="result">
 
-        <h2>Generated Prompt</h2>
+    <h2>Generated Prompt</h2>
 
-        <pre id="promptResult"></pre>
+    <pre id="promptResult"></pre>
 
+    <h2>🤖 Gemini AI Response</h2>
+
+    <div id="aiResponse" class="response-box">
+        AI response will appear here...
     </div>
+
+</div>
 
     <div class="score">
 
@@ -103,6 +134,33 @@ Example 2..."></textarea>
 </div>
 
 <script src="/static/script.js"></script>
+<div class="history">
+
+    <h2>📜 Prompt History</h2>
+
+    <table id="historyTable">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Role</th>
+                <th>Task</th>
+                <th>Score</th>
+                <th>Date</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+</div>
 
 </body>
 </html>
