@@ -216,6 +216,6 @@ By building this project, you will learn:
 
 Developed by:
 
-**Your Name**
+Steniha C
 
 B.Tech Artificial Intelligence & Data Science
